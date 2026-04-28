@@ -1,6 +1,7 @@
 package com.ch.libraryflow.loan.domain;
 
 import com.ch.libraryflow.book.domain.Book;
+import com.ch.libraryflow.common.exception.LoanAlreadyReturnedException;
 import com.ch.libraryflow.member.domain.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,8 +25,15 @@ public class Loan {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private LoanStatus loanStatus;
+
     @Column(nullable = false)
     private LocalDateTime loanedAt;
+
+    @Column(nullable = false)
+    private LocalDateTime returnedAt;
 
     protected Loan() {
     }
@@ -34,6 +42,14 @@ public class Loan {
         this.member = member;
         this.book = book;
         this.loanedAt = LocalDateTime.now();
+    }
+
+    public void returnLoan() {
+        if (this.loanStatus == LoanStatus.RETURNED) {
+            throw new LoanAlreadyReturnedException();
+        }
+        this.loanStatus = LoanStatus.RETURNED;
+        this.returnedAt = LocalDateTime.now();
     }
 
     public static Loan create(Member member, Book book) {
