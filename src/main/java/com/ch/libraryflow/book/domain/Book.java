@@ -44,9 +44,6 @@ public class Book {
         this.bookStatus = BookStatus.LOANED;
     }
     public void returnBook() {
-        if (bookStatus == BookStatus.AVAILABLE) {
-            throw new BookAlreadyLoanedException();
-        }
         this.bookStatus = BookStatus.AVAILABLE;
     }
 }

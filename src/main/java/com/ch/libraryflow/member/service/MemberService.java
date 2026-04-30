@@ -27,3 +27,10 @@ public class MemberService {
         return new MemberRegisterResponse(findMember.getUsername(),findMember.getEmail());
     }
 }
+
+/*
+* TODO:
+*  	•	대출 정책 엔진: OCP 연습 최고
+* 	•	예약 대출 기능: 상태 전이, 도메인 설계 연습 최고
+* 	•	연체료 계산: 계산 로직, 전략 분리 연습 좋음
+* */

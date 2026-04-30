@@ -32,7 +32,7 @@ public class Loan {
     @Column(nullable = false)
     private LocalDateTime loanedAt;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime returnedAt;
 
     protected Loan() {
@@ -41,7 +41,9 @@ public class Loan {
     private Loan(Member member, Book book) {
         this.member = member;
         this.book = book;
+        this.loanStatus = LoanStatus.LOANED;
         this.loanedAt = LocalDateTime.now();
+        this.returnedAt = null;
     }
 
     public void returnLoan() {

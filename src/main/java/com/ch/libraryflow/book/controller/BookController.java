@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
 @RequestMapping("/api/books")
 public class BookController {
 
