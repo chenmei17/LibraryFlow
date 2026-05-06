@@ -7,6 +7,7 @@ public abstract class BusinessException extends ApplicationException {
     protected BusinessException(ErrorCode errorCode) {
         super(errorCode);
     }
+
     @Override
     public HttpStatus getStatus() {
         return HttpStatus.CONFLICT;

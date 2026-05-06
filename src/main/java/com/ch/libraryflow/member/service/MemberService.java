@@ -14,7 +14,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public MemberRegisterResponse save(MemberRegisterRequest request){
+    public MemberRegisterResponse registerMember(MemberRegisterRequest request){
         Member member = Member.create(request.username(),request.email());
         Member savedMember = memberRepository.save(member);
 

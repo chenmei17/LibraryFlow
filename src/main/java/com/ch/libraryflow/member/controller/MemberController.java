@@ -17,7 +17,7 @@ public class MemberController {
 
     @PostMapping
     public ResponseEntity<MemberRegisterResponse> registerMember(@RequestBody MemberRegisterRequest request){
-        MemberRegisterResponse response = memberService.save(request);
+        MemberRegisterResponse response = memberService.registerMember(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

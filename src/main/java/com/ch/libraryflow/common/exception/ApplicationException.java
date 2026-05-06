@@ -2,7 +2,7 @@ package com.ch.libraryflow.common.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class ApplicationException  extends RuntimeException {
+public abstract class ApplicationException  extends RuntimeException {
     private final ErrorCode errorCode;
 
     protected ApplicationException(ErrorCode errorCode) {
@@ -14,9 +14,7 @@ public class ApplicationException  extends RuntimeException {
         return errorCode;
     }
 
-    public HttpStatus getStatus() {
-        return HttpStatus.CONFLICT;
-    }
+    public abstract HttpStatus getStatus();
 
 }
 
